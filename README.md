@@ -4,6 +4,14 @@
 
 ## Pre-requisites
 
+### Easy Way: Download the Vagrant Box
+- [Download](https://app.vagrantup.com/dveleztx/boxes/ansible-server-flaskgunginx) our Vagrant Box from the Cloud
+- `vagrant box add dveleztx/ansible-server-flaskgunginx`
+- `vagrant up`
+- `vagrant ssh`
+- You can go straight into deployment from here by following instructions below starting at **Configure Ansible** section
+  - **NOTE:** git cloning won't be necessary as all the files are there
+
 ### Install VirtualBox and Vagrant
 - CraftedTech Blog Instructions: https://craftedtech.net/post/vagrant-virtualbox-setup/
 
