@@ -1,6 +1,8 @@
-# Using Ansible 2 to automate the creation of a Flask + Gunicorn + NGINX Web Application on Ubuntu Vagrant Machine
+<center><h1>Using Ansible 2 to automate the creation of a Flask + Gunicorn + NGINX Web Application on Ubuntu Vagrant Machine</h1></center>
 
 **NOTE:** This is a simple template, but it demonstrates how automation saves a ton of time instead of writing a ton of bash scripts to setup a webserver. This was done in a test environment on a vagrant instance of Ubuntu Bionic.
+
+## Pre-requisites
 
 ### Install VirtualBox and Vagrant
 - CraftedTech Blog Instructions: https://craftedtech.net/post/vagrant-virtualbox-setup/
@@ -12,7 +14,7 @@
 - Installation: https://www.vagrantup.com/docs/installation/
 - Useful Vagrant Specific Commands: https://www.vagrantup.com/docs/cli/
 
-### Spin up Ubuntu for Ansible Server
+## Spin up Ubuntu to setup Ansible Server
 - `vagrant box list` - Shows your currently installed boxes
 
 **Create a vagrant project folder**
@@ -41,4 +43,34 @@ end
 - `vagrant halt` - shuts the vagrant machine down, you could use -f argument to force it
 - `vagrant destroy` - stops the machine and for all intents and purposes, destroys it, you cannot recover this instance if you run this command
 
-### Setting up Ansible 2
+## Setting up Ansible 2
+
+### Get Latest Releases via Apt
+- `sudo apt-get update`
+- `sudo apt-get install software-properties-common`
+
+#### Install Ansible
+- Via Apt
+  - `sudo apt-add-repository --yes --update ppa:ansible/ansible` - This can take a while
+  - `sudo apt-get install ansible -y`
+- Via pip
+  - `sudo apt install python3-pip`
+  - `sudo pip3 install ansible`
+
+#### Configure Ansible
+- `sudo vim /etc/ansible/ansible.cfg` - make sure to uncomment the host_key_checking and set it to False per the following:
+```
+[defaults]
+host_key_checking = False
+```
+
+- Configure what hosts Ansible Server will connect to
+  - Each one of the *target* machines need to have python and SSH setup
+  - `sudo vim /etc/ansible/host` - the following code block is an **example** of a setup
+```
+[webservers]
+192.168.1.10 ansible_ssh_port=22 ansible_ssh_user=vagrant ansible_ssh_private_key_file=/home/vagrant/.ssh/id_rsa
+```
+- **NOTE:** Verify the SSH port, with Vagrant sometimes this can change, a good command to verify this is to run this command on the machine in question: `sudo netstat -tulpn`, this will show what ports are open and listening
+
+## Setup Ansible Target - Webserver
