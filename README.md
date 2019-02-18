@@ -88,6 +88,6 @@ host_key_checking = False
 
 Now just explore to the site and it should have your hello world!
 
-### References
+## References
 
 - Support David Cohen, author of Ansible 2 for Beginners: https://www.udemy.com/ansible-2-for-beginners/
