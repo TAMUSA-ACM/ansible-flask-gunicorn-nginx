@@ -87,3 +87,7 @@ host_key_checking = False
 - Execute the script from the Ansible Server: `sudo ansible-playbook webserver-setup.yml -u root -i /etc/ansible/hosts`
 
 Now just explore to the site and it should have your hello world!
+
+### References
+
+- Support David Cohen, author of Ansible 2 for Beginners: https://www.udemy.com/ansible-2-for-beginners/
