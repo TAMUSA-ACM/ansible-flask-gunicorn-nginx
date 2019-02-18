@@ -49,7 +49,7 @@
 
     - name: Create Project App
       template:
-        src: "flaskguni/myproject.py"
+        src: "flaskguni/{{ site_name }}.py"
         dest: "/srv/{{ site_name }}"
 
     - name: Create the WSGI Entry Point
@@ -59,14 +59,14 @@
 
     - name: Create Service File for Flask/Gunicorn
       template:
-        src: "services/myproject.service"
+        src: "services/{{ site_name }}.service"
         dest: "/etc/systemd/system/"
 
     - name: Restart custom service, also issue daemon-reload to pick up config changes
       systemd:
         state: restarted
         daemon_reload: yes
-        name: myproject.service
+        name: "{{ site_name }}.service"
 
     - name: Install nginx
       package: name=nginx state=latest
@@ -83,7 +83,7 @@
 
     - name: Create nginx vhost config file
       template:
-        src: "nginx/myproject.conf"
+        src: "nginx/{{ site_name }}.conf"
         dest: "/etc/nginx/sites-available/{{ site_name }}.conf"
       notify:
       - restart nginx
