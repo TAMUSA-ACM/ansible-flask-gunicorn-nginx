@@ -72,7 +72,7 @@ host_key_checking = False
 ```
 - **NOTE:** Verify the SSH port, with Vagrant sometimes this can change, a good command to verify this is to run this command on the machine in question: `sudo netstat -tulpn`, this will show what ports are open and listening
 
-## Setup the Webserver using Ansible
+## Prep the Webserver using Ansible
 
 - Use the above instructions to setup your vagrant machine
 - On a vagrant machine, SSH is already preconfigured
@@ -82,7 +82,7 @@ host_key_checking = False
 - Run this [script](https://github.com/TAMUSA-ACM/ansible-flask-gunicorn-nginx/blob/master/prepare_ansible_target.yml) from your ansible server to setup your target webserver
   - Use the following command to execute ansible execution of the YML script: `sudo ansible-playbook prepare_ansible_target.yml -i /etc/ansible/hosts -u vagrant -k --ask-sudo-pass` - This will prompt you for the password for vagrant, enter the password and this will automatically install python for you, which is needed to do automation. This will also enter your private SSH key into authorized_keys on the target machine, saving you from having to enter creds in the future
   
-## Build Webserver Playbook 
+## Setup and Build Webserver Playbook 
 - Using my playbook, a lot of the heavy lifting thankfully has been done, if you are curious to see the details of it, feel free to look through the [YML Script](https://github.com/TAMUSA-ACM/ansible-flask-gunicorn-nginx/blob/master/webserver-setup.yml)
 - Execute the script from the Ansible Server: `sudo ansible-playbook webserver-setup.yml -u root -i /etc/ansible/hosts`
 
