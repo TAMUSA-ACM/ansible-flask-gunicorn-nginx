@@ -1,51 +1,110 @@
 # ansible-flask-gunicorn-nginx
 
-## Project Overview
-This repository provides an Ansible-based automation template for setting up a Flask web application with Gunicorn and NGINX on an Ubuntu Vagrant machine. The aim of this project is to showcase the potential of automation in DevOps by simplifying the deployment process and eliminating the need for extensive bash scripting. It covers a range of topics including automation, flask, vagrant, webapp, ansible, backend, bash, microservice, script, scripting, and task.
+This repository hosts an Ansible-based automation template designed to streamline the deployment process of a Flask web application using Gunicorn and NGINX on an Ubuntu Vagrant machine. It showcases the effectiveness of automation in DevOps, minimizing the need for complex bash scripting and enhancing the ease of deployment for Flask-based applications.
 
-## Setup / Installation Instructions
+## Project Overview
+
+The structure of this project is organized to facilitate easy understanding and modification:
+
+```
+ansible-flask-gunicorn-nginx/
+│
+├── ansible/
+│   ├── playbooks/
+│   │   ├── setup.yml           # Main Ansible playbook to setup the entire stack
+│   │   └── ...
+│   ├── roles/
+│   │   ├── flask/
+│   │   ├── gunicorn/
+│   │   ├── nginx/
+│   │   └── ...
+│   └── hosts                   # Inventory file for Ansible
+│
+├── vagrant/
+│   ├── Vagrantfile             # Configuration for Vagrant machine
+│   └── ...
+│
+├── app/
+│   ├── main.py                 # Sample Flask application
+│   ├── requirements.txt        # Python dependencies for the Flask app
+│   └── ...
+│
+└── README.md
+```
 
 ### Dependencies
-Before you can use this repository, make sure you have the following software installed on your system:
 
+- **Ansible**: For automating the deployment process.
+- **Vagrant**: Used for creating and configuring virtual development environments.
+- **VirtualBox**: As the provider for Vagrant machines.
+- **Python**: Required by Flask and to run Ansible scripts locally.
+- **Flask**: Python web framework.
+- **Gunicorn**: WSGI HTTP Server for UNIX to serve Python applications.
+- **NGINX**: Web server used as a reverse proxy for Gunicorn.
+
+## Setup & Installation
+
+### Prerequisites
+
+Ensure you have the following installed on your local machine:
+- Ansible
 - Vagrant
 - VirtualBox
-- Ansible
+- Python
 
-### Steps
-1. Clone this repository to your local machine: 
-```bash
-git clone https://github.com/yourusername/ansible-flask-gunicorn-nginx.git
+### Getting Started
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/yourusername/ansible-flask-gunicorn-nginx.git
+   cd ansible-flask-gunicorn-nginx
+   ```
+
+2. **Start Vagrant Machine**
+
+   Navigate to the `vagrant` directory and run:
+
+   ```bash
+   vagrant up
+   ```
+
+   This command will set up an Ubuntu virtual machine with all necessary configurations.
+
+3. **Run Ansible Playbook**
+
+   After the Vagrant machine is up and running, execute the Ansible playbook:
+
+   ```bash
+   ansible-playbook -i ansible/hosts ansible/playbooks/setup.yml
+   ```
+
+   This will install and configure Flask, Gunicorn, and NGINX on the Vagrant machine.
+
+## Usage
+
+Once the setup is complete, you can access the Flask application via your web browser:
+
 ```
-2. Navigate to the cloned repository:
-```bash
-cd ansible-flask-gunicorn-nginx
-```
-3. Run the Vagrant machine:
-```bash
-vagrant up
-```
-4. SSH into the Vagrant machine:
-```bash
-vagrant ssh
-```
-5. Run the Ansible Playbook:
-```bash
-ansible-playbook playbook.yml
+http://localhost:8080
 ```
 
-## Usage Examples
-Once you have the Vagrant machine up and running with the Flask application, you can access it by navigating to `http://localhost:8080` on your web browser. 
+This URL will route you through NGINX to the Gunicorn served Flask app running inside the Vagrant machine.
 
-## Contribution Guidelines
-We welcome contributions from the community. If you'd like to contribute, please follow these steps:
+## Contributing
 
-1. Fork the repository.
-2. Create a new branch for your changes.
-3. Make your changes in your branch.
-4. Submit a pull request with a detailed explanation of your changes.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-Before submitting your pull request, make sure your changes do not break the existing functionality of the application. 
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## License
-This project is licensed under the MIT License. For more details, see the [LICENSE](LICENSE) file.
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+This README aims to cover all the necessary steps to get this project up and running on your local machine. For more detailed instructions or troubleshooting, consider exploring more specific documentation or the project's issue tracker.
