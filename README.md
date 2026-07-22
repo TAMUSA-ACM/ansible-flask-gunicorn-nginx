@@ -1,110 +1,58 @@
+```markdown
 # ansible-flask-gunicorn-nginx
 
-This repository hosts an Ansible-based automation template designed to streamline the deployment process of a Flask web application using Gunicorn and NGINX on an Ubuntu Vagrant machine. It showcases the effectiveness of automation in DevOps, minimizing the need for complex bash scripting and enhancing the ease of deployment for Flask-based applications.
+## Overview
 
-## Project Overview
+The `ansible-flask-gunicorn-nginx` repository provides an Ansible-based automation template for setting up a Flask web application with Gunicorn and NGINX on an Ubuntu Vagrant machine. This project demonstrates the power of automation in DevOps by simplifying the deployment process and significantly reducing the need for extensive bash scripting.
 
-The structure of this project is organized to facilitate easy understanding and modification:
+## Features
 
-```
-ansible-flask-gunicorn-nginx/
-│
-├── ansible/
-│   ├── playbooks/
-│   │   ├── setup.yml           # Main Ansible playbook to setup the entire stack
-│   │   └── ...
-│   ├── roles/
-│   │   ├── flask/
-│   │   ├── gunicorn/
-│   │   ├── nginx/
-│   │   └── ...
-│   └── hosts                   # Inventory file for Ansible
-│
-├── vagrant/
-│   ├── Vagrantfile             # Configuration for Vagrant machine
-│   └── ...
-│
-├── app/
-│   ├── main.py                 # Sample Flask application
-│   ├── requirements.txt        # Python dependencies for the Flask app
-│   └── ...
-│
-└── README.md
-```
+- **Automated Deployment**: Use Ansible to automate the setup of a Flask application environment.
+- **Vagrant Integration**: Easily create and configure a virtualized development environment.
+- **NGINX and Gunicorn**: Implement a robust web server setup with NGINX as a reverse proxy and Gunicorn as the application server.
+- **Scalability**: Designed with microservices in mind, allowing easy scaling and management.
 
-### Dependencies
-
-- **Ansible**: For automating the deployment process.
-- **Vagrant**: Used for creating and configuring virtual development environments.
-- **VirtualBox**: As the provider for Vagrant machines.
-- **Python**: Required by Flask and to run Ansible scripts locally.
-- **Flask**: Python web framework.
-- **Gunicorn**: WSGI HTTP Server for UNIX to serve Python applications.
-- **NGINX**: Web server used as a reverse proxy for Gunicorn.
-
-## Setup & Installation
+## Setup and Installation
 
 ### Prerequisites
 
-Ensure you have the following installed on your local machine:
-- Ansible
-- Vagrant
-- VirtualBox
-- Python
+- [Vagrant](https://www.vagrantup.com/downloads)
+- [VirtualBox](https://www.virtualbox.org/)
+- [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 
-### Getting Started
+### Installation Steps
 
-1. **Clone the Repository**
-
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/yourusername/ansible-flask-gunicorn-nginx.git
    cd ansible-flask-gunicorn-nginx
    ```
 
-2. **Start Vagrant Machine**
-
-   Navigate to the `vagrant` directory and run:
-
+2. **Start Vagrant**:
    ```bash
    vagrant up
    ```
 
-   This command will set up an Ubuntu virtual machine with all necessary configurations.
-
-3. **Run Ansible Playbook**
-
-   After the Vagrant machine is up and running, execute the Ansible playbook:
-
+3. **Run Ansible Playbook**:
+   Once the Vagrant machine is up, provision it using Ansible:
    ```bash
-   ansible-playbook -i ansible/hosts ansible/playbooks/setup.yml
+   ansible-playbook -i inventory.ini playbook.yml
    ```
-
-   This will install and configure Flask, Gunicorn, and NGINX on the Vagrant machine.
 
 ## Usage
 
-Once the setup is complete, you can access the Flask application via your web browser:
+After completing the setup, your Flask application should be running and accessible via the configured NGINX server. You can access it through the IP address and port configured in your Vagrantfile or inventory settings.
 
-```
-http://localhost:8080
-```
+## Contribution Guidelines
 
-This URL will route you through NGINX to the Gunicorn served Flask app running inside the Vagrant machine.
+We welcome contributions to enhance this project! Please fork the repository and create a pull request for any features, bug fixes, or enhancements. Ensure that your code adheres to the existing style and include relevant tests where applicable.
 
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Commit your changes with clear descriptions.
+4. Open a pull request with a detailed description of the changes.
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
-
----
-
-This README aims to cover all the necessary steps to get this project up and running on your local machine. For more detailed instructions or troubleshooting, consider exploring more specific documentation or the project's issue tracker.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+```
