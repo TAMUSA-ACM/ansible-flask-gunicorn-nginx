@@ -1,56 +1,58 @@
 ```markdown
-# ansible-flask-gunicorn-nginx
+# Ansible Flask Gunicorn NGINX
 
-Automate Flask app deployment with Ansible on Vagrant using Gunicorn & NGINX. This project simplifies DevOps tasks for creating scalable web environments, allowing developers to focus more on building features rather than managing deployments.
+Automate Flask app deployment with Ansible on Vagrant using Gunicorn & NGINX. This project simplifies DevOps tasks for scalable web environments, providing a seamless deployment process for your Flask applications. 
 
 ## Features
 
-- **Automated Deployment**: Use Ansible to automate the deployment of Flask applications.
-- **Scalable Architecture**: Deploy Flask apps using Gunicorn as the application server and NGINX as the reverse proxy.
-- **Vagrant Integration**: Leverage Vagrant for creating consistent development environments.
-- **Efficient Management**: Simplifies the management of backend services using script automation.
+- **Automation**: Use Ansible to automate the deployment of Flask applications.
+- **Virtualized Environment**: Leverage Vagrant to create and manage virtualized development environments.
+- **Efficient WSGI Server**: Deploy applications using Gunicorn, a Python WSGI HTTP server for UNIX.
+- **Robust Web Server**: Utilize NGINX as a reverse proxy server for handling client requests and serving static files.
+- **Scalability**: Easily scale applications with minimal configuration changes.
 
 ## Setup and Installation
 
-To get started with this project, follow these steps:
+### Prerequisites
+
+Ensure you have the following installed on your development machine:
+
+- [Vagrant](https://www.vagrantup.com/)
+- [VirtualBox](https://www.virtualbox.org/)
+- [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
+
+### Installation Steps
 
 1. **Clone the Repository**:
-    ```bash
-    git clone https://github.com/yourusername/ansible-flask-gunicorn-nginx.git
-    cd ansible-flask-gunicorn-nginx
-    ```
+   ```bash
+   git clone https://github.com/yourusername/ansible-flask-gunicorn-nginx.git
+   cd ansible-flask-gunicorn-nginx
+   ```
 
-2. **Install Dependencies**:
-    Ensure that you have Vagrant and Ansible installed on your system.
+2. **Start Vagrant**:
+   ```bash
+   vagrant up
+   ```
 
-3. **Start Vagrant**:
-    ```bash
-    vagrant up
-    ```
-
-4. **Deploy the Application**:
-    Use Ansible to provision the Vagrant environment and deploy your Flask application.
+3. **Deploy the Application**:
+   - Ansible will automatically provision the virtual machine and deploy the Flask application using the provided playbooks.
 
 ## Usage
 
-1. **Deploy Application**:
-   Run the Ansible playbook to deploy your application:
-   ```bash
-   ansible-playbook -i inventory playbook.yml
-   ```
-
-2. **Access the Application**:
-   Once deployed, access the Flask application via `http://localhost:8000`.
+- Access the deployed application by navigating to `http://localhost:8080` in your web browser.
+- Modify the Flask application code in the `app/` directory and redeploy by rerunning the Ansible playbook:
+  ```bash
+  ansible-playbook -i inventory deploy.yml
+  ```
 
 ## Contribution Guidelines
 
-We welcome contributions to enhance this project. To contribute:
+We welcome contributions to enhance this project! Please follow these guidelines:
 
-- Fork the repository.
-- Create a new branch for your feature or bug fix.
-- Submit a pull request with a detailed description of your changes.
-
-Please ensure that your contributions adhere to the existing coding standards and include tests where applicable.
+1. Fork the repository and create your branch from `main`.
+2. Ensure your code follows the existing style and includes appropriate comments.
+3. Test your changes thoroughly.
+4. Submit a pull request with a detailed description of your changes.
 
 ## License
 
