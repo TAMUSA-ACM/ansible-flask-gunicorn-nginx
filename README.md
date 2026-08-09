@@ -1,27 +1,17 @@
 ```markdown
-# Ansible Flask Gunicorn NGINX
+# ansible-flask-gunicorn-nginx
 
-Automate Flask app deployment with Ansible on Vagrant using Gunicorn & NGINX. This project simplifies DevOps tasks for scalable web environments, providing a seamless deployment process for your Flask applications. 
+Automate the deployment of your Flask applications using Ansible on Vagrant with Gunicorn and NGINX. This project simplifies DevOps tasks for setting up scalable web environments, making it easier to manage and deploy your Flask applications efficiently.
 
 ## Features
 
-- **Automation**: Use Ansible to automate the deployment of Flask applications.
-- **Virtualized Environment**: Leverage Vagrant to create and manage virtualized development environments.
-- **Efficient WSGI Server**: Deploy applications using Gunicorn, a Python WSGI HTTP server for UNIX.
-- **Robust Web Server**: Utilize NGINX as a reverse proxy server for handling client requests and serving static files.
-- **Scalability**: Easily scale applications with minimal configuration changes.
+- **Automated Deployment**: Utilize Ansible scripts to automate the deployment process, reducing manual configuration.
+- **Vagrant Integration**: Easily create and manage virtualized development environments with Vagrant.
+- **Gunicorn Support**: Leverage Gunicorn to serve your Flask application, ensuring robust and efficient handling of web requests.
+- **NGINX Configuration**: Use NGINX as a reverse proxy to manage incoming traffic and enhance the performance and security of your web application.
+- **Scalability**: Designed to support scalable web environments for growing applications.
 
 ## Setup and Installation
-
-### Prerequisites
-
-Ensure you have the following installed on your development machine:
-
-- [Vagrant](https://www.vagrantup.com/)
-- [VirtualBox](https://www.virtualbox.org/)
-- [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
-
-### Installation Steps
 
 1. **Clone the Repository**:
    ```bash
@@ -29,32 +19,43 @@ Ensure you have the following installed on your development machine:
    cd ansible-flask-gunicorn-nginx
    ```
 
-2. **Start Vagrant**:
+2. **Install Vagrant and VirtualBox**:
+   - Download and install [Vagrant](https://www.vagrantup.com/downloads).
+   - Download and install [VirtualBox](https://www.virtualbox.org/wiki/Downloads).
+
+3. **Start the Vagrant Environment**:
    ```bash
    vagrant up
    ```
 
-3. **Deploy the Application**:
-   - Ansible will automatically provision the virtual machine and deploy the Flask application using the provided playbooks.
+4. **Run Ansible Playbook**:
+   - Ensure you have Ansible installed on your machine.
+   - Execute the playbook to set up the environment:
+     ```bash
+     ansible-playbook -i inventory/hosts setup.yml
+     ```
 
 ## Usage
 
-- Access the deployed application by navigating to `http://localhost:8080` in your web browser.
-- Modify the Flask application code in the `app/` directory and redeploy by rerunning the Ansible playbook:
-  ```bash
-  ansible-playbook -i inventory deploy.yml
-  ```
+1. **Deploy Your Flask Application**:
+   - Place your Flask application files in the designated directory within the Vagrant environment.
+   - The Ansible scripts will automatically configure Gunicorn and NGINX to serve the application.
+
+2. **Access Your Application**:
+   - Once deployed, access your Flask application via `http://localhost:8000` (or the configured port).
 
 ## Contribution Guidelines
 
-We welcome contributions to enhance this project! Please follow these guidelines:
+We welcome contributions to enhance this project. To contribute:
 
-1. Fork the repository and create your branch from `main`.
-2. Ensure your code follows the existing style and includes appropriate comments.
-3. Test your changes thoroughly.
-4. Submit a pull request with a detailed description of your changes.
+1. Fork the repository.
+2. Create a new branch for your feature or bugfix.
+3. Commit your changes and push to your fork.
+4. Open a pull request with a detailed description of your changes.
+
+Please adhere to the existing coding style and include relevant tests with your contributions.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 ```
